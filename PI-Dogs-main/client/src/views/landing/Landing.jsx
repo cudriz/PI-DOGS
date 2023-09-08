@@ -1,11 +1,9 @@
-import "./landing.module.css";
-
-function landing() {
-  return (
-    <div >
-     <p>Este es el componente landing</p>
-    </div>
-  );
+const Landing = ( )=>{
+    return (
+        <>
+        <h1>Esta es la vista de Landing</h1>
+        </>
+    )
 }
 
-export default landing;
+export default Landing

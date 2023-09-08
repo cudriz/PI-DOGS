@@ -5,6 +5,7 @@ const {
   createDogDb,
   fetchTemperamentsFromApi,
   saveTemperamentsToDatabase,
+  getAllDog
 } = require("../controllers/dogsControllers");
 
 const getBreed = async (req, res) => {
@@ -31,10 +32,11 @@ const getNameHandler = async (req, res) => {
   const { name } = req.query;
   try {
     if (name) {
-      const dogByName = getBreedByName(name);
+      const dogByName = await getBreedByName(name);
       res.status(200).json(dogByName);
     } else {
-      res.status().json("no existe la raza solicitada");
+      const response = await getAllDog()
+      res.status().json(response);
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

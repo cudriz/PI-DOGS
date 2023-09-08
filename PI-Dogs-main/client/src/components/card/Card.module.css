@@ -1,0 +1,42 @@
+
+   .card {
+      background-color: #fceeee;
+      border: 1px solid #b720e6;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      
+    }
+    
+    .card:hover {
+      transform: scale(1.05); /* Escala ligeramente la tarjeta al pasar el cursor */
+    }
+
+
+.img{
+   width: 100%;
+   height: auto;
+   border-radius: 10px;
+   margin-bottom: 10px;
+}
+.card p {
+   margin: 0; /* Elimina el margen predeterminado */
+   font-size: 16px;
+   line-height: 1.5;
+ }
+
+.name{
+  margin-bottom: 5px; /* Espacio adicional después del nombre */
+  color: #963fe7
+}
+
+.temperament{
+   color: #963fe7; /* Color de texto personalizado */
+}
+
+.weight{
+   font-size: 14px; /* Tamaño de fuente ligeramente más pequeño para el peso */
+   color: #963fe7
+}

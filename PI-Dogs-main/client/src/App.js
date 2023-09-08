@@ -1,21 +1,24 @@
-
-import {Route, BrowserRouter} from 'react-router-dom'
-import Home from './views/home/Home'
-import Detail from './views/detail/Detail'
-import Create from './views/create/Create';
-import Landing from './views/landing/Landing'
+import {Home, Landing,Form, Detail} from './views'
+import { Route} from "react-router-dom"
+import Navbar from './components/Navbar/Navbar';
+import { useLocation } from 'react-router-dom';
 
 
 function App() {
+  const location = useLocation()
   return (
-    <BrowserRouter>
-    <div >
-      <Route path='/' element={Landing}/>
-      <Route  path='/home' element={<Home/>}/>
-      <Route path='/detail:id' element={ <Detail/>}/>
-      <Route path='/create' element={<Create/>}/>
-    </div>
-    </BrowserRouter>
+  <div>
+    {location.pathname !== "/" && <Navbar/> }
+ <Route exact path='/' component={Landing}/>
+ <Route exact path='/detail' component={Detail}/>
+ <Route exact path='/create' component={Form}/>
+ 
+ <Route path='/home' render={() => <Home/>}/>
+ 
+ 
+ 
+     
+  </div>
   );
 }
 

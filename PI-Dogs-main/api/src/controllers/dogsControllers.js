@@ -5,8 +5,8 @@ const apiUrl = "https://api.thedogapi.com/v1/breeds";
 const { API_KEY } = process.env;
 
 const getAllDogBreeds = async (req, res) => {
-  const response = await axios.get(apiUrl);
-  return response.data.map((dog) => ({ name: dog.name }));
+  const response = await axios.get(`${apiUrl}?api_key=${API_KEY}`);
+  return response.data.map((dog) => ({ raza: dog.breed_group }));
 };
 const getBreedById = async (id, source) => {
   const dog =
@@ -32,6 +32,17 @@ const infoCleaner = (array) => {
     };
   });
 };
+const  getAllDog = async ()=>{
+  const dogDB = await Dogs.finAll()
+
+  const infoApi = (await axios.get(
+    `${apiUrl}?api_key=${API_KEY}`
+    )).data
+
+    const dogsApi = infoCleaner(infoApi)
+
+    return [...dogDB, ...dogsApi]
+}
 
 const getBreedByName = async (name) => {
   const infoApi = await axios.get(
@@ -54,7 +65,7 @@ const createDogDb = async (Nombre, Imagen, Altura, Peso, Añosdevida) => {
 };
 
 const fetchTemperamentsFromApi = async () => {
-  const response = await axios.get(`${apiUrl}`);
+  const response = await axios.get(`${apiUrl}?api_key=${API_KEY}`);
     if (response.status !== 200) {
       throw new Error(
         "No se pudo obtener la lista de razas de perros de la API."
@@ -91,4 +102,5 @@ module.exports = {
   createDogDb,
   fetchTemperamentsFromApi,
   saveTemperamentsToDatabase,
+  getAllDog
 };
