@@ -1,14 +1,14 @@
 import Card from "../Card/Card"
 import style from './CardsContainer.module.css'
-import {useSelector}  from "react-redux"
 
 
-const CardsContainer = () =>{
+
+const CardsContainer = ({cards}) =>{
    
-  const dogs = useSelector(state=>state.dogs)
+  
 return (
   <div className={style.container}>
-  {dogs.map((dog) => {
+  {cards.map((dog) => {
    
     const image= dog.image.url
     const nombre = dog.name;
